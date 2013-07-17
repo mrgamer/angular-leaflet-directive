@@ -34,9 +34,8 @@ leafletDirective.directive('leaflet', [
     var str_inspect_hint = 'Add testing="testing" to <leaflet> tag to inspect this object';
 
     return {
-        restrict: "E",
+        restrict: "EA",
         replace: true,
-        transclude: true,
         scope: {
             center: '=center',
             maxBounds: '=maxbounds',
