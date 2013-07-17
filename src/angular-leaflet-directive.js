@@ -46,7 +46,8 @@ leafletDirective.directive('leaflet', [
             defaults: '=defaults',
             paths: '=paths',
             tiles: '=tiles',
-            events: '=events'
+            events: '=events',
+            map: '=map'
         },
         template: '<div class="angular-leaflet-map"></div>',
         link: function ($scope, element, attrs /*, ctrl */) {
@@ -72,7 +73,7 @@ leafletDirective.directive('leaflet', [
                 parseInt($scope.defaults.minZoom, 10) : defaults.minZoom;
             $scope.leaflet.doubleClickZoom = !!(attrs.defaults && $scope.defaults && (typeof($scope.defaults.doubleClickZoom) == "boolean") ) ? $scope.defaults.doubleClickZoom  : defaults.doubleClickZoom;
             
-            var map = new L.Map(element[0], { 
+            var map = $scope.map = new L.Map(element[0], { 
                 maxZoom: $scope.leaflet.maxZoom, 
                 minZoom: $scope.leaflet.minZoom,
                 doubleClickZoom: $scope.leaflet.doubleClickZoom 
